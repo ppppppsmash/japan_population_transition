@@ -57,3 +57,26 @@
 - `npm run lint`: ESLintを使用してコードをリントします
 - `npm run preview`: ビルドされたアプリケーションをプレビューします
 - `npm run format`: Prettierを使用してコードをフォーマットします
+
+---
+
+## 参考URL
+### スタック
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+
+### データ、API関連
+- [RESAS API](https://opendata.resas-portal.go.jp/)
+- [RESAS API 仕様書](https://opendata.resas-portal.go.jp/docs/api/v1/index.html)
+
+### グラフ関連
+- [Highcharts](https://www.highcharts.com/)
+- [Highcharts-react-official](https://github.com/highcharts/highcharts-react)
+
+### フォーマット関連
+- [Prettier](https://prettier.io/)
+- [ESLint](https://eslint.org/)
+
+### トラブルシューティング
+- [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier)
+- [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
