@@ -6,13 +6,20 @@ import { Checkbox } from './components/ui/checkbox/Checkbox';
 import { Charts } from './components/ui/chart/Chart';
 import { FilterButton } from './components/ui/button/Button';
 
-import { Prefecture } from './types';
+import { Prefecture, PopulationType } from './types';
 
 import './App.css';
 import 'normalize.css';
 
 function App() {
-  const { prefectures, handleCheckboxChange, population } = usePrefecturePopulationHooks();
+  const {
+    prefectures,
+    handleCheckboxChange,
+    population,
+    populationTypes,
+    selectedType,
+    setSelectedType,
+  } = usePrefecturePopulationHooks();
 
   return (
     <>
@@ -42,13 +49,19 @@ function App() {
           </Heading>
 
           <div className="filterButtonWrapper">
-            <FilterButton label="総人口" />
-            <FilterButton label="年少人口" />
-            <FilterButton label="生産年齢人口" />
-            <FilterButton label="老年人口" />
+            {populationTypes.map(
+              (type: PopulationType['label'], index: number) => (
+                <FilterButton
+                  key={index}
+                  label={type}
+                  isSelected={type === selectedType}
+                  onClick={() => setSelectedType(type)}
+                />
+              ),
+            )}
           </div>
 
-          <Charts population={population} />
+          {/* <Charts population={population} /> */}
         </div>
       </Layout>
     </>

@@ -1,5 +1,19 @@
+import { PopulationType } from '../../../types';
+
 import classes from './Button.module.css';
 
-export const FilterButton = ({ label }: { label: string }) => {
-  return <button className={classes.button}>{label}</button>;
+interface ButtonProps extends PopulationType {
+  isSelected: boolean;
+  onClick: () => void;
+}
+
+export const FilterButton = ({ label, isSelected, onClick }: ButtonProps) => {
+  return (
+    <button
+      className={isSelected ? classes.buttonSelected : classes.button}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  );
 };
