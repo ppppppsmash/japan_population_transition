@@ -1,11 +1,42 @@
-.headingWrapper {
-  color: var(--color-primary);
-  position: relative;
-  padding: 20px 0;
+.titleWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
   margin: 0 auto;
+  background-color: var(--bg-tertiary-color);
+
+  .title {
+    text-align: center;
+    position: relative;
+    padding: 20px 0;
+    display: inline-block;
+    margin: 0 auto;
+    background: linear-gradient(74deg, var(--gradient-color-1), var(--gradient-color-2), var(--gradient-color-3), var(--gradient-color-3), var(--gradient-color-2), var(--gradient-color-1),  var(--gradient-color-2), var(--gradient-color-3), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: var(--gradient-animation);
+
+    @media screen and (max-width: 600px) {
+      font-size: 20px;
+    }
+  }
+}
+
+.headingWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  opacity: 0;
+  animation: var(--fade-animation);
 
   .heading {
     color: var(--color-primary);
     opacity: 0.5;
+
+    @media screen and (max-width: 600px) {
+      font-size: 16px;
+    }
   }
 }

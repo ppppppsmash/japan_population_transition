@@ -6,6 +6,8 @@
   --bg-primary-color: #131314;
   --bg-secondary-color: #CCCCCC;
   --bg-tertiary-color: #333333;
+  --fade-animation: fade 0.5s forwards 0.2s;
+  --gradient-animation: gradient-animation 2s forwards;
 }
 
 .checkboxWrapper {
@@ -15,4 +17,24 @@
   padding: 0 20px;
   gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+@keyframes fade {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 100% 0%;
+    background-size: 800% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+    background-size: 400% 100%;
+  }
 }
