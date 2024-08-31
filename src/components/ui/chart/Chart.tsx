@@ -1,15 +1,17 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-export const Charts = () => {
+import { Population } from '../../../types';
+
+export const Charts = ({ population }: { population: Population[] }) => {
   const options: Highcharts.Options = {
     title: {
       text: '人口推移',
     },
     series: [
       {
-        type: 'line',
-        data: [1, 2, 3],
+        type: 'spline',
+        data: population.map((item) => item.value),
         marker: {
           enabled: true,
         },
@@ -17,11 +19,14 @@ export const Charts = () => {
       },
     ],
     xAxis: {
-      categories: ['1980', '1990', '2000'],
+      categories: population.map((item) => item.year.toString()),
     },
     yAxis: {
       title: {
         text: '人口数',
+      },
+      labels: {
+        format: '{value}人',
       },
     },
   };

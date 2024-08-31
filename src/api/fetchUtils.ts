@@ -19,3 +19,22 @@ export const fetchPrefectures = async () => {
     throw error;
   }
 };
+
+export const fetchPopulation = async (prefCode: number) => {
+  const response = await fetch(`${BASE_URL}/api/v1/population/composition/perYear?prefCode=${prefCode}`, {
+    headers: {
+      'X-API-KEY': RESAS_API_KEY,
+    },
+  });
+
+  try {
+    const data = await response.json();
+    const populationData = data.result.data[0].data;
+
+    return populationData;
+  } catch (error) {
+    console.error('failed to fetch population composition', error);
+
+    throw error;
+  }
+};

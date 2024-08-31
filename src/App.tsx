@@ -6,11 +6,13 @@ import { Checkbox } from './components/ui/checkbox/Checkbox';
 import { Charts } from './components/ui/chart/Chart';
 import { FilterButton } from './components/ui/button/Button';
 
+import { Prefecture } from './types';
+
 import './App.css';
 import 'normalize.css';
 
 function App() {
-  const { prefectures, selectedPrefectures, handleCheckboxChange } = usePrefecturePopulationHooks();
+  const { prefectures, handleCheckboxChange, population } = usePrefecturePopulationHooks();
 
   return (
     <>
@@ -25,7 +27,7 @@ function App() {
           </Heading>
 
           <div className="checkboxWrapper">
-            {prefectures.map((prefecture) => (
+            {prefectures.map((prefecture: Prefecture) => (
               <Checkbox
                 key={prefecture.prefCode}
                 label={prefecture.prefName}
@@ -46,7 +48,7 @@ function App() {
             <FilterButton label="老年人口" />
           </div>
 
-          <Charts />
+          <Charts population={population} />
         </div>
       </Layout>
     </>
