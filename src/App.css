@@ -1,7 +1,7 @@
 :root {
   --color-primary: #FFFFFF;
   --gradient-color-1: #4285F4;
-  --gradient-color-2: #9b72CB;
+  --gradient-color-2: #9B72CB;
   --gradient-color-3: #D96570;
   --bg-primary-color: #131314;
   --bg-secondary-color: #CCCCCC;
@@ -17,6 +17,17 @@
   padding: 0 20px;
   gap: 20px;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.filterButtonWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  @media screen and (max-width: 600px) {
+    padding: 0 20px;
+  }
 }
 
 @keyframes fade {
