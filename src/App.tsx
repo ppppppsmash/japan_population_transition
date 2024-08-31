@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react';
-
-import { fetchPrefectures } from './api/fetchUtils';
+import { usePrefecturePopulationHooks } from './hooks/usePrefecturePopulation';
 
 import Layout from './components/layout/Layout';
 import { Heading } from './components/ui/heading/Heading';
@@ -11,24 +9,8 @@ import { FilterButton } from './components/ui/button/Button';
 import './App.css';
 import 'normalize.css';
 
-interface Prefecture {
-  prefCode: number;
-  prefName: string;
-}
-
 function App() {
-  const [prefectures, setPrefectures] = useState<Prefecture[]>([]);
-  const [checked, setChecked] = useState(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setChecked(e.target.checked);
-    alert(e.target.checked);
-  };
-
-  useEffect(() => {
-    fetchPrefectures().then((prefectures) => {
-      setPrefectures(prefectures);
-    });
-  }, []);
+  const { prefectures, selectedPrefectures, handleCheckboxChange } = usePrefecturePopulationHooks();
 
   return (
     <>
@@ -47,8 +29,8 @@ function App() {
               <Checkbox
                 key={prefecture.prefCode}
                 label={prefecture.prefName}
-                checked={checked}
-                onChange={handleChange}
+                index={prefecture.prefCode}
+                onChange={() => handleCheckboxChange(prefecture)}
               />
             ))}
           </div>

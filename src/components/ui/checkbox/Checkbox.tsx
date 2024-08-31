@@ -2,15 +2,15 @@ import classes from './Checkbox.module.css';
 
 interface CheckboxProps {
   label: string;
-  checked: boolean;
+  index: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Checkbox = ({ label, checked, onChange }: CheckboxProps) => {
+export const Checkbox = ({ label, index, onChange }: CheckboxProps) => {
   return (
     <div className={classes.checkbox}>
-      <input type="checkbox" id="checkbox" name={label} value={label} onChange={onChange} checked={checked} />
-      <label htmlFor="checkbox">
+      <input type="checkbox" id={`checkbox-${index}`} name={label} value={label} onChange={onChange} />
+      <label htmlFor={`checkbox-${index}`}>
         <span />
         {label}
       </label>
