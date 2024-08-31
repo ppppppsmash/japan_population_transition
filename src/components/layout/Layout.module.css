@@ -3,7 +3,7 @@
   justify-content: center;
   height: 100svh;
   background-color: var(--bg-primary-color);
-
+  background-image: url('/images/grid.svg');
   .main {
     width: 100%;
     margin: 0 auto;

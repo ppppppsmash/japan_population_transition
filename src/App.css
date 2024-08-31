@@ -5,4 +5,14 @@
   --gradient-color-3: #D96570;
   --bg-primary-color: #131314;
   --bg-secondary-color: #CCCCCC;
+  --bg-tertiary-color: #333333;
+}
+
+.checkboxWrapper {
+  display: grid;
+  max-width: 800px;
+  margin: 35px auto 60px;
+  padding: 0 20px;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
 }
