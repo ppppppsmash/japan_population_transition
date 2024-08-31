@@ -3,6 +3,8 @@ import { useState } from 'react';
 import Layout from './components/layout/Layout';
 import { Heading } from './components/ui/heading/Heading';
 import { Checkbox } from './components/ui/checkbox/Checkbox';
+import { Charts } from './components/ui/chart/Chart';
+
 import './App.css';
 import 'normalize.css';
 
@@ -29,6 +31,12 @@ function App() {
             <Checkbox label="東京都" checked={checked} onChange={handleChange} />
             <Checkbox label="神奈川県" checked={!checked} onChange={handleChange} />
           </div>
+
+          <Heading level={3} align="left">
+            人口種類
+          </Heading>
+
+          <Charts />
         </div>
       </Layout>
     </>
