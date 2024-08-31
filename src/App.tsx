@@ -1,4 +1,5 @@
 import Layout from './components/layout/Layout';
+import { Heading } from './components/ui/Heading';
 
 import './App.css';
 import 'normalize.css';
@@ -7,7 +8,7 @@ function App() {
   return (
     <>
       <Layout>
-        <h1>Hello World!!!</h1>
+        <Heading level={1}>Hello World!!!</Heading>
       </Layout>
     </>
   );
