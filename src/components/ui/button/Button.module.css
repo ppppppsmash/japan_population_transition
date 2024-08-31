@@ -4,7 +4,7 @@
   font-weight: 600;
   border: none;
   border-radius: 25px;
-  background-color: var(--bg-primary-color);
+  background-color: var(--bg-tertiary-color);
   color: var(--color-primary);
   opacity: 0.6;
   transition: all 0.3s ease;
