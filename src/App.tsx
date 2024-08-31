@@ -1,10 +1,14 @@
+import Layout from './components/layout/Layout';
+
 import './App.css';
 import 'normalize.css';
 
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Layout>
+        <h1>Hello World!!!</h1>
+      </Layout>
     </>
   );
 }
