@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { fetchPrefectures } from './api/fetchUtils';
 
 import Layout from './components/layout/Layout';
 import { Heading } from './components/ui/heading/Heading';
@@ -9,12 +11,24 @@ import { FilterButton } from './components/ui/button/Button';
 import './App.css';
 import 'normalize.css';
 
+interface Prefecture {
+  prefCode: number;
+  prefName: string;
+}
+
 function App() {
+  const [prefectures, setPrefectures] = useState<Prefecture[]>([]);
   const [checked, setChecked] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
     alert(e.target.checked);
   };
+
+  useEffect(() => {
+    fetchPrefectures().then((prefectures) => {
+      setPrefectures(prefectures);
+    });
+  }, []);
 
   return (
     <>
@@ -29,8 +43,14 @@ function App() {
           </Heading>
 
           <div className="checkboxWrapper">
-            <Checkbox label="東京都" checked={checked} onChange={handleChange} />
-            <Checkbox label="神奈川県" checked={!checked} onChange={handleChange} />
+            {prefectures.map((prefecture) => (
+              <Checkbox
+                key={prefecture.prefCode}
+                label={prefecture.prefName}
+                checked={checked}
+                onChange={handleChange}
+              />
+            ))}
           </div>
 
           <Heading level={3} align="left">
