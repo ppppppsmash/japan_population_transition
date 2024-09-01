@@ -15,11 +15,7 @@ export const Charts = ({
 }) => {
   if (data.length === 0) {
     return (
-      <div className={classes.noDataMessage}>
-        データが選択されていません。
-        <br />
-        都道府県を選択してください。
-      </div>
+      <div className={classes.noDataMessage}>データが選択されていません。</div>
     );
   }
 
