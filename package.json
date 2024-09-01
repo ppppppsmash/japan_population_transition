@@ -1,8 +1,10 @@
 {
-  "name": "japan_population_transition",
+  "name": "japan-population-transition",
+  "author": "Arata Kurosawa",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "node": "22.3.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
