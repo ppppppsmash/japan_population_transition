@@ -1,0 +1,12 @@
+.layoutWrapper {
+  min-height: 100vh;
+  background-image: url('/images/grid.svg'); 
+  background-position: center;
+  background-repeat: repeat;
+  background-color: var(--bg-primary-color);
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

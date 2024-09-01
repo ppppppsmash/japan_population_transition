@@ -1,33 +1,69 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
+import { usePrefecturePopulationHooks } from './hooks/usePrefecturePopulation';
+
+import Layout from './components/layout/Layout';
+import { Heading } from './components/ui/heading/Heading';
+import { Checkbox } from './components/ui/checkbox/Checkbox';
+import { Charts } from './components/ui/chart/Chart';
+import { FilterButton } from './components/ui/button/Button';
+
+import { Prefecture, PopulationType } from './types';
+
 import './App.css';
+import 'normalize.css';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const {
+    prefectures,
+    handleCheckboxChange,
+    population,
+    populationTypes,
+    selectedType,
+    setSelectedType,
+  } = usePrefecturePopulationHooks();
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Layout>
+        <Heading level={2} align="center" titlePattern={true}>
+          日本の都道府県別総人口推移可視化SPA
+        </Heading>
+
+        <div className="container">
+          <Heading level={3} align="left">
+            都道府県
+          </Heading>
+
+          <div className="checkboxWrapper">
+            {prefectures.map((prefecture: Prefecture) => (
+              <Checkbox
+                key={prefecture.prefCode}
+                label={prefecture.prefName}
+                index={prefecture.prefCode}
+                onChange={() => handleCheckboxChange(prefecture)}
+              />
+            ))}
+          </div>
+
+          <Heading level={3} align="left">
+            人口種類
+          </Heading>
+
+          <div className="filterButtonWrapper">
+            {populationTypes.map(
+              (type: PopulationType['label'], index: number) => (
+                <FilterButton
+                  key={index}
+                  label={type}
+                  isSelected={type === selectedType}
+                  onClick={() => setSelectedType(type)}
+                />
+              ),
+            )}
+          </div>
+
+          <Charts data={population} selectedType={selectedType} />
+        </div>
+      </Layout>
     </>
   );
 }

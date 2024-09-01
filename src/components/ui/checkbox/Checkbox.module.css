@@ -1,0 +1,118 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0.5;
+
+  label {
+    display: inline-block;
+    color: var(--color-primary);
+    opacity: 0.5;
+    cursor: pointer;
+    position: relative;
+  
+    span {
+      display: inline-block;
+      position: relative;
+      background-color: transparent;
+      width: 18px;
+      height: 18px;
+      transform-origin: center;
+      border: 2px solid var(--color-primary);
+      border-radius: 50%;
+      vertical-align: -6px;
+      margin-right: 10px;
+      transition: background-color 150ms 200ms, transform 350ms cubic-bezier(.78,-1.22,.17,1.89);
+  
+      &::before {
+        content: "";
+        width: 0px;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--color-primary);
+        position: absolute;
+        transform: rotate(45deg);
+        top: 9px;
+        left: 5px;
+        transition: width 50ms ease 50ms;
+        transform-origin: 0% 0%;
+        -webkit-transition: width 50ms ease 50ms;
+      }
+  
+      &::after {
+        content: "";
+        width: 0;
+        height: 2px;
+        border-radius: 2px;
+        background: var(--color-primary);
+        position: absolute;
+        transform: rotate(305deg);
+        top: 13px;
+        left: 6px;
+        transition: width 50ms ease;
+        transform-origin: 0% 0%;
+      }
+    }
+  
+    &:hover {
+      span {
+        &:before {
+          width: 5px;
+          transition: width 100ms ease;
+        }
+        
+        &::after {
+          width: 10px;
+          transition: width 150ms ease 100ms;
+        }
+      }
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  
+    &:checked {
+      + label {
+        span {
+          background-color: var(--color-primary);
+          
+          &:after {
+            width: 10px;
+            background: var(--bg-primary-color);
+            transition: width 150ms ease 100ms;
+          }
+          
+          &:before {
+            width: 5px;
+            background: var(--bg-primary-color);
+            transition: width 150ms ease 100ms;
+            -webkit-transition: width 150ms ease 100ms;
+            -moz-transition: width 150ms ease 100ms;
+            -ms-transition: width 150ms ease 100ms;
+            -o-transition: width 150ms ease 100ms;
+}
+        }
+        
+        &:hover {
+          span {
+            background-color: var(--color-primary);
+            transform: scale(1.25);
+
+            &:after {
+              width: 10px;
+              background: var(--bg-secondary-color);
+              transition: width 150ms ease 100ms;
+            }
+
+            &:before {
+              width: 5px;
+              background: var(--bg-secondary-color);
+              transition: width 150ms ease 100ms;
+            }
+          }  
+        }
+      }
+    }
+  }
+}

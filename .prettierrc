@@ -8,5 +8,6 @@
   "arrowParens": "always",
   "endOfLine": "lf",
   "embeddedLanguageFormatting": "auto",
-  "jsxBracketSameLine": false
+  "jsxBracketSameLine": false,
+  "printWidth": 80
 }
