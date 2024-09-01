@@ -25,7 +25,7 @@ function App() {
     <>
       <Layout>
         <Heading level={2} align="center" titlePattern={true}>
-          日本の都道府県別総人口推移可視化SPA
+          日本の都道府県別総人口推移
         </Heading>
 
         <div className="container">

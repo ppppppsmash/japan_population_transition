@@ -29,10 +29,11 @@
 .filterButtonWrapper {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 16px;
   margin-bottom: 20px;
 
   @media screen and (max-width: 600px) {
+    gap: 10px;
     padding: 0 20px;
   }
 }

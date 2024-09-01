@@ -64,7 +64,7 @@ export const chartConfig = (data: PopulationResult[]): Highcharts.Options => {
         },
       },
       labels: {
-        format: '{value}人',
+        format: '{value}',
         style: {
           color: '#e0e0e0',
         },
@@ -83,6 +83,36 @@ export const chartConfig = (data: PopulationResult[]): Highcharts.Options => {
       itemHoverStyle: {
         color: '#ffffff',
       },
+    },
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 480,
+          },
+          chartOptions: {
+            xAxis: {
+              title: {
+                text: '年度',
+                align: 'high',
+                offset: 0,
+                rotation: 0,
+                y: 20,
+                x: 0,
+                style: {
+                  color: '#e0e0e0',
+                  fontSize: '10px',
+                },
+              },
+            },
+            legend: {
+              align: 'center',
+              verticalAlign: 'bottom',
+              layout: 'horizontal',
+            },
+          },
+        },
+      ],
     },
     plotOptions: {
       series: {
