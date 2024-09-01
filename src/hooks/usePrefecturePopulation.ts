@@ -17,27 +17,40 @@ export const usePrefecturePopulationHooks = () => {
   >([]);
 
   const handleCheckboxChange = (prefecture: Prefecture) => {
-    setSelectedPrefectures([...selectedPrefectures, prefecture]);
+    if (selectedPrefectures.some((p) => p.prefCode === prefecture.prefCode)) {
+      setSelectedPrefectures(
+        selectedPrefectures.filter((p) => p.prefCode !== prefecture.prefCode),
+      );
+      setPopulation((prev) =>
+        prev.filter((p) => p.prefecture !== prefecture.prefName),
+      );
+    } else {
+      setSelectedPrefectures([...selectedPrefectures, prefecture]);
+      getPopulation(prefecture.prefName, prefecture.prefCode);
+    }
   };
 
   const getPopulation = useCallback(
     async (prefName: string, prefCode: number) => {
       const data = await fetchPopulation(prefCode);
+
       setPopulation((prev) => {
         if (!prev.some((p) => p.prefecture === prefName)) {
           const types = data.map((t: PopulationType) => t.label);
           setPopulationTypes((prevTypes) =>
             Array.from(new Set([...prevTypes, ...types])),
           );
+
+          return [
+            ...prev,
+            {
+              prefecture: prefName,
+              population: data,
+            },
+          ];
         }
 
-        return [
-          ...prev,
-          {
-            prefecture: prefName,
-            population: data,
-          },
-        ];
+        return prev;
       });
     },
     [],
