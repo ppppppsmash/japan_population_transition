@@ -16,7 +16,14 @@
   margin: 35px auto 60px;
   padding: 0 20px;
   gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+
+  @media screen and (max-width: 600px) {
+    max-height: 400px;
+    margin: 20px auto 40px;
+    overflow-y: auto;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .filterButtonWrapper {

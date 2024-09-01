@@ -10,7 +10,11 @@ interface ButtonProps extends PopulationType {
 export const FilterButton = ({ label, isSelected, onClick }: ButtonProps) => {
   return (
     <button
-      className={isSelected ? classes.buttonSelected : classes.button}
+      className={
+        isSelected
+          ? `${classes.button} ${classes.buttonSelected}`
+          : classes.button
+      }
       onClick={onClick}
     >
       {label}
