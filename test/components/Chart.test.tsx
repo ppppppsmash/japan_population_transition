@@ -40,6 +40,6 @@ describe('Charts', () => {
       <Charts data={data} selectedType={selectedType} />,
     );
 
-    expect(getByText('データが選択されていません。')).toBeInTheDocument();
+    expect(getByText('都道府県が選択されていません。')).toBeInTheDocument();
   });
 });
