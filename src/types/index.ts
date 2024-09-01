@@ -21,3 +21,8 @@ export type PopulationList = {
   label: string;
   data: Population[];
 };
+
+export type PopulationResult = {
+  prefecture: string;
+  data: Population[];
+};

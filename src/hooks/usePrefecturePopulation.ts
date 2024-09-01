@@ -64,7 +64,7 @@ export const usePrefecturePopulationHooks = () => {
   }, []);
 
   useEffect(() => {
-    selectedPrefectures.forEach((prefecture) => {
+    selectedPrefectures.map((prefecture) => {
       if (!population.some((p) => p.prefecture === prefecture.prefName)) {
         getPopulation(prefecture.prefName, prefecture.prefCode);
       }
@@ -72,7 +72,7 @@ export const usePrefecturePopulationHooks = () => {
   }, [selectedPrefectures, population, getPopulation]);
 
   useEffect(() => {
-    selectedPrefectures.forEach((prefecture) => {
+    selectedPrefectures.map((prefecture) => {
       getPopulation(prefecture.prefName, prefecture.prefCode);
     });
   }, [getPopulation, selectedPrefectures]);

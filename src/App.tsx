@@ -61,7 +61,7 @@ function App() {
             )}
           </div>
 
-          {/* <Charts population={population} /> */}
+          <Charts data={population} selectedType={selectedType} />
         </div>
       </Layout>
     </>

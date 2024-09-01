@@ -1,10 +1,29 @@
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
-import { Population } from '../../../types';
+import { PrefectureList, PopulationType } from '../../../types';
 import classes from './Chart.module.css';
 
-export const Charts = ({ population }: { population: Population[] }) => {
+export const Charts = ({
+  data,
+  selectedType,
+}: {
+  data: PrefectureList[];
+  selectedType: PopulationType['label'];
+}) => {
+  const filteredData = data.map((prefData) => {
+    const populationData = prefData.population.find(
+      (pop) => pop.label === selectedType,
+    );
+
+    console.log(populationData);
+
+    return {
+      prefecture: prefData.prefecture,
+      data: populationData?.data || [],
+    };
+  });
+
   const options: Highcharts.Options = {
     chart: {
       backgroundColor: 'transparent',
@@ -20,18 +39,18 @@ export const Charts = ({ population }: { population: Population[] }) => {
         display: 'none',
       },
     },
-    series: [
-      {
-        type: 'spline',
-        data: population.map((item) => item.value),
-        marker: {
-          enabled: true,
-        },
-        lineWidth: 2,
+    series: filteredData.map((prefData) => ({
+      type: 'spline',
+      name: prefData.prefecture,
+      data: prefData.data.map((item) => item.value),
+      marker: {
+        enabled: true,
       },
-    ],
+      lineWidth: 2,
+    })),
     xAxis: {
-      categories: population.map((item) => item.year.toString()),
+      categories:
+        filteredData[0]?.data.map((item) => item.year.toString()) || [],
       title: {
         text: '年度',
         align: 'high',
@@ -40,7 +59,7 @@ export const Charts = ({ population }: { population: Population[] }) => {
         y: -6,
         x: 32,
         style: {
-          color: '#E0E0E0',
+          color: '#e0e0e0',
           fontSize: '12px',
         },
       },
@@ -48,7 +67,7 @@ export const Charts = ({ population }: { population: Population[] }) => {
       tickColor: '#606060',
       labels: {
         style: {
-          color: '#E0E0E0',
+          color: '#e0e0e0',
         },
       },
       tickInterval: 2,
@@ -62,7 +81,7 @@ export const Charts = ({ population }: { population: Population[] }) => {
         y: -30,
         x: -20,
         style: {
-          color: '#E0E0E0',
+          color: '#e0e0e0',
           fontSize: '12px',
         },
       },
@@ -80,11 +99,11 @@ export const Charts = ({ population }: { population: Population[] }) => {
       verticalAlign: 'top',
       layout: 'vertical',
       itemStyle: {
-        color: '#E0E0E0',
+        color: '#e0e0e0',
         fontWeight: 'normal',
       },
       itemHoverStyle: {
-        color: '#FFFFFF',
+        color: '#ffffff',
       },
     },
     plotOptions: {
