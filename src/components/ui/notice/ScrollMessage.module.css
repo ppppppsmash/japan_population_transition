@@ -1,0 +1,7 @@
+.scrollMessage {
+  color: var(--color-primary);
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  opacity: 0.3;
+}

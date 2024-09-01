@@ -13,6 +13,16 @@ export const Charts = ({
   data: PrefectureList[];
   selectedType: PopulationType['label'];
 }) => {
+  if (data.length === 0) {
+    return (
+      <div className={classes.noDataMessage}>
+        データが選択されていません。
+        <br />
+        都道府県を選択してください。
+      </div>
+    );
+  }
+
   const filteredData = data.map((prefData) => {
     const populationData = prefData.population.find(
       (pop) => pop.label === selectedType,
