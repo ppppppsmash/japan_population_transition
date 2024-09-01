@@ -7,12 +7,22 @@ interface HeadingProps {
   titlePattern?: boolean;
 }
 
-export const Heading = ({ level, children, align = 'left', titlePattern = false }: HeadingProps) => {
+export const Heading = ({
+  level,
+  children,
+  align = 'left',
+  titlePattern = false,
+}: HeadingProps) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
   return (
-    <div className={`${titlePattern ? classes.titleWrapper : classes.headingWrapper}`}>
-      <Tag className={`${titlePattern ? classes.title : classes.heading}`} style={{ textAlign: align }}>
+    <div
+      className={`${titlePattern ? classes.titleWrapper : classes.headingWrapper}`}
+    >
+      <Tag
+        className={`${titlePattern ? classes.title : classes.heading}`}
+        style={{ textAlign: align }}
+      >
         {children}
       </Tag>
     </div>
